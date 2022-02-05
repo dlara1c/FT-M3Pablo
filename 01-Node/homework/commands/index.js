@@ -52,6 +52,16 @@ module.exports = {
             done(lastLines);
         })
     },
+    wc: function (args,done) {
+        fs.readFile(args[0], 'utf-8', function (err, data) {
+            if (err) throw err;
+            var lines = data.split('\n');
+            var count = lines.length - 1;
+            // process.stdout.write(lastLines);
+            // process.stdout.write(" \n prompt > ");
+            done(count.toString());
+        })
+    },
     curl: function (args,done) {
         request(args[0], function (error, response, body) {
             if (error) throw error;
